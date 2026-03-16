@@ -7,7 +7,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
-    <script src="script.js"></script>
+  <!-- images of jerry cans -->
+  <div class="jerry-can-container">
+    <img id="jerry-can-half" src="img/jerry can half.png" alt="Jerry Can Half filled with water" class="jerry-can" style="display: none;">
+    <img id="jerry-can-empty" src="img/jerry can empty.png" alt="Empty Jerry Can" class="jerry-can">
+    <img id="jerry-can-quarter" src="img/jerry can quarter.png" alt="Jerry Can Quarter filled with water" class="jerry-can" style="display: none;">
+    <img id="jerry-can-three-quarter" src="img/jerry can three quart.png" alt="Jerry Can filled three Quarters" class="jerry-can" style="display: none;">
+    <img id="jerry-can-full" src="img/jerry can full.png" alt="Jerry Can Quarter completely filled" class="jerry-can" style="display: none;">
+  </div>
+
+  <!-- Fill Button-->
+  <button id="fill-button">FILL</button>
+
+  <!-- Score Display -->
+  <div id="score">Score: 0</div>
+
+  <!-- Timer and Pause Controls -->
+  <div id="center-controls">
+    <div id="timer">30</div>
+    <button id="pause-button">II</button>
+    <div class="timing-bar">
+      <div class="progress-ticker"></div>
+    </div>
+  </div>
+
+  <!-- Game Over Message -->
+  <div id="game-over" style="display: none;">
+    <h2>Game Over!</h2>
+    <p>You filled <span id="final-score">0</span> jerry cans!</p>
+    <p>Learn more about the importance of clean water!</p>
+    <button id="restart-button">Play Again</button>
+    <button id="home-button">Home</button>
+    <button id="learn-button">Learn More</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
