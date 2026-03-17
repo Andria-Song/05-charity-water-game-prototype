@@ -8,8 +8,12 @@ const jerryCanHalf = document.getElementById('jerry-can-half');
 const jerryCanThreeQuarter = document.getElementById('jerry-can-three-quarter');
 const jerryCanFull = document.getElementById('jerry-can-full');
 
+const gameOverMessage = document.getElementById('game-over');
+const finalScoreElement = document.getElementById('final-score');
+
 // Transfering fill button to the js//
 const fillButton = document.getElementById('fill-button');
+const resetButton = document.getElementById('restart-button') || document.getElementById('reset-button');
 
 const score = document.getElementById('score');
 let currentScore = 0;
@@ -20,6 +24,31 @@ const progressTicker = document.querySelector('.progress-ticker');
 
 // This stores the current X position of the ticker (in pixels)
 let tickerX = 0;
+
+//Timer Function
+const timerElement = document.getElementById('timer');
+let timerValue = 30;
+let timerIntervalId = null;
+function countdownTimer() {
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+  }
+
+  timerIntervalId = setInterval(function() {
+    timerValue--;
+    timerElement.textContent = `${timerValue}`;
+    if (timerValue <= 0) {
+      clearInterval(timerIntervalId);
+      timerIntervalId = null;
+      timerElement.textContent = "0";
+      fillButton.disabled = true; // Disable the fill button when time is up
+      if (finalScoreElement) {
+        finalScoreElement.textContent = `${currentScore}`;
+      }
+      gameOverMessage.style.display = "block"; // Show the game over message
+    }
+  }, 1000);
+  }
 
 // Move the ticker, but keep it inside the bar at all times
 function setTickerPosition(newX) {
@@ -80,12 +109,14 @@ function filledJerryCan() {
       jerryCanEmpty.style.display = "block";
 
       // Make game faster, while staying inside caps
-      tickerIntervalMs = Math.max(MIN_TICKER_INTERVAL_MS, tickerIntervalMs - 1);
+      tickerIntervalMs = Math.max(MIN_TICKER_INTERVAL_MS, tickerIntervalMs - 0.5);
       tickerStepPx = Math.min(MAX_TICKER_STEP_PX, tickerStepPx + 1);
 
       startTicker();
     }
   }
+
+countdownTimer();
 
 function toggleJerryCanImageGreen() {
   // If the empty can is showing (visible by default, so display is "" or "block")
@@ -169,3 +200,33 @@ fillButton.addEventListener('click', () => {
 
 
 });
+
+if (resetButton) {
+  resetButton.addEventListener('click', () => {
+    // Reset the game state
+    currentScore = 0;
+    score.textContent = `Score: ${currentScore}`;
+    if (finalScoreElement) {
+      finalScoreElement.textContent = `${currentScore}`;
+    }
+    timerValue = 30;
+    timerElement.textContent = `${timerValue}`;
+    fillButton.disabled = false; // Re-enable the fill button
+    gameOverMessage.style.display = "none"; // Hide the game over message
+
+    // Reset the jerry can images to the initial state
+    jerryCanEmpty.style.display = "block";
+    jerryCanQuarter.style.display = "none";
+    jerryCanHalf.style.display = "none";
+    jerryCanThreeQuarter.style.display = "none";
+    jerryCanFull.style.display = "none";
+
+    // Reset ticker speed and position
+    tickerIntervalMs = 10;
+    tickerStepPx = 2;
+    setTickerPosition(0); // Move ticker back to start
+    startTicker(); // Restart the ticker movement
+
+    countdownTimer(); // Restart the timer
+  });
+}
