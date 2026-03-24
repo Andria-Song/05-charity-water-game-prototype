@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 /* Charity: water Brand Colors
 
 Primary Colors:
@@ -14,10 +16,12 @@ Secondary Colors:
 
 */
 
+
 /* Page Background */
 body {
     margin: 0;
     min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
     background-color: #8BD1CB;
     background-image: linear-gradient(
         to bottom,
@@ -26,6 +30,23 @@ body {
         #4FCB53 65%,
         #4FCB53 100%
     );
+}
+
+#start-screen {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    text-align: center;
+    color: #000000;
+    background-color: #FFC907;
+    padding: 20px;
+    border-radius: 20px;
+    h2 {
+        margin: 15px 0 8px;
+    }
 }
 
 .jerry-can-container {
@@ -45,6 +66,17 @@ body {
     height: 100%;
     object-fit: contain;
     object-position: center bottom;
+}
+
+#logo,
+#logo-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    object-fit: contain;
 }
 
 .timing-bar {
@@ -95,7 +127,23 @@ body {
     left: 30%;
     font-size: 18px;
     color: #000000;
-    font-family: 'Arial', sans-serif;
+    background-color: #2E9DF7;
+    padding: 5px 10px;
+    margin-top: 0px;
+    border-radius: 20px;
+    border: 1.5px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#goal {
+    position: absolute;
+    top: 20px;
+    right: 30%;
+    font-size: 18px;
+    color: #000000;
     background-color: #2E9DF7;
     padding: 5px 10px;
     margin-top: 0px;
@@ -118,12 +166,46 @@ body {
     gap: 8px;
 }
 
+#difficulty-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 16px;
+}
+
+.difficulty-button {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000000;
+    background-color: #2E9DF7;
+    border: 1.5px solid #000000;
+    border-radius: 14px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+#start-button {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #2E9DF7;
+    margin-top: 16px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid #000000;
+    cursor: pointer;
+}
+
+.difficulty-button.is-active {
+    background-color: #FF902A;
+}
+
 #pause-button {
     width: 30px;
     height: 30px;
     font-size: 18px;
     color: #000000;
-    font-family: 'Arial', sans-serif;
     background-color: #2E9DF7;
     padding: 0;
     border-radius: 50%;
@@ -136,7 +218,6 @@ body {
 #timer {
     font-size: 18px;
     color: #000000;
-    font-family: 'Arial', sans-serif;
     background-color: #2E9DF7;
     padding: 5px 5px;
     border-radius: 20px;
@@ -153,7 +234,6 @@ body {
     font-size: 28px;
     font-weight: bold;
     color: #000000;
-    font-family: 'Arial', sans-serif;
     background-color: #2E9DF7;
     padding: 0;
     border-radius: 50px;
@@ -164,18 +244,76 @@ body {
 }
 
 #game-over {
+    width: 30%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 36px;
+    font-size: 26px;
+    text-align: center;
     color: #000000;
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f3f3;
-    padding: 20px 40px;
-    border-radius: 30px;
-    border: 2px solid #000000;
+    background-color: #FFC907;
+    padding: 14px;
+    border-radius: 20px;
     display: none; /* Hidden by default, shown when game is over */
+}
+
+#game-over h2 {
+    margin: 15px 0 8px;
+}
+
+#number {
+    font-size: 18px;
+    color: #000000;
+    background-color: #ffa515;
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    padding: 8px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+#final-score {
+    font-size: 42px;
+    color: #000000;
+    text-align: center;
+    background-color: transparent;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+#message {
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+    background-color: transparent;
+    padding: 8px;
+    margin: 8px auto;
+    border-radius: 20px;
+    width: 70%;
+}
+
+#message p {
+    margin: 0;
+}
+
+#restart-button,
+#donate-button,
+#learn-button {
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: #2E9DF7;
+    color: #000000;
+    border: 1.5px solid #000000;
+    padding: 8px 14px;
+    margin: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
 @media (max-width: 800px) {
@@ -185,6 +323,10 @@ body {
 
     #score {
         left: 10%;
+    }
+
+    #goal {
+        right: 10%;
     }
 
     #center-controls {
@@ -203,4 +345,12 @@ body {
     width: 200px;
     height: 200px;
     }
+  }
+
+  #game-over {
+    width: 70%;
+  }
+
+  #start-screen {
+    width: 70%;
   }

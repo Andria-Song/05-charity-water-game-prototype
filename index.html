@@ -22,6 +22,7 @@
   <div id="top-hud">
     <!-- Score Display -->
     <div id="score">Score: 0</div>
+    <div id="goal">Goal: 7</div>
 
     <!-- Timer and Pause Controls -->
     <div id="center-controls">
@@ -33,14 +34,33 @@
     </div>
   </div>
 
+  <div id= "start-screen" style="display: none;">
+    <h1>Fill the Can</h1>
+    <p>Help charity: water provide clean drinking water by filling as much jerry cans as you can before time runs out!</p>
+    <h2>Select Difficulty</h2>
+    <div id="difficulty-controls" aria-label="Difficulty Level">
+        <button class="difficulty-button" data-level="easy">Easy</button>
+        <button class="difficulty-button is-active" data-level="medium">Medium</button>
+        <button class="difficulty-button" data-level="hard">Hard</button>
+      </div>
+    <button id="start-button">Start Game</button>
+    <a id="logo-button" href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">
+      <img id="logo" src="img/water-can.png" alt="charity water logo">
+    </a>
+  </div>
+
   <!-- Game Over Message -->
   <div id="game-over" style="display: none;">
     <h2>Game Over!</h2>
-    <p>You filled <span id="final-score">0</span> jerry cans!</p>
-    <p>Learn more about the importance of clean water!</p>
+    <div id="number">
+      <p>You filled<br><span id="final-score">0</span><br>jerry cans!</p>
+    </div>
+    <div id="message">
+      <p>Play again or learn more about the importance of clean water!</p>
+    </div>
     <button id="restart-button">Play Again</button>
-    <button id="home-button">Home</button>
-    <button id="learn-button">Learn More</button>
+    <a id="donate-button" href="https://www.charitywater.org/donate/the-spring" target="_blank" rel="noopener noreferrer">Donate</a>
+    <a id="learn-button" href="https://www.charitywater.org/our-work" target="_blank" rel="noopener noreferrer">Learn More</a>
   </div>
 
   <script src="script.js"></script>
