@@ -68,15 +68,29 @@ body {
     object-position: center bottom;
 }
 
-#logo,
 #logo-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    position: fixed;
+    bottom: clamp(10px, 2.5vh, 20px);
+    right: clamp(10px, 2.5vw, 20px);
     width: 60px;
     height: 60px;
     border-radius: 20px;
     object-fit: contain;
+    z-index: 20;
+}
+
+#logo-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .timing-bar {
@@ -302,6 +316,7 @@ body {
 }
 
 #restart-button,
+#home-button,
 #donate-button,
 #learn-button {
     font-size: 14px;
@@ -316,7 +331,14 @@ body {
     cursor: pointer;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
+  #logo-button {
+    width: 50px;
+    height: 50px;
+    bottom: clamp(8px, 2vh, 14px);
+    right: clamp(8px, 2vw, 14px);
+    }   
+  
     .timing-bar {
         width: 80vw;
     }
@@ -354,3 +376,10 @@ body {
   #start-screen {
     width: 70%;
   }
+
+@media (max-width: 480px) {
+        #logo-button {
+                width: 44px;
+                height: 44px;
+        }
+}

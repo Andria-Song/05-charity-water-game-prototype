@@ -18,6 +18,7 @@ const startButton = document.getElementById('start-button');
 const homeButton = document.getElementById('home-button');
 const topHud = document.getElementById('top-hud');
 const jerryCanContainer = document.querySelector('.jerry-can-container');
+const pauseButton = document.getElementById('pause-button');
 
 // Transfering fill button to the js//
 const fillButton = document.getElementById('fill-button');
@@ -40,8 +41,8 @@ const DIFFICULTY_SETTINGS = {
     goalScore: 7,
     startTime: 25,
     startTickerIntervalMs: 8,
-    startTickerStepPx: 2,
-    speedUpIntervalDelta: 0.7,
+    startTickerStepPx: 2.5,
+    speedUpIntervalDelta: 0.5,
     speedUpStepDelta: 1
   },
   hard: {
@@ -415,6 +416,8 @@ fillButton.addEventListener('click', () => {
     toggleJerryCanImageRed();
   }
 
+  
+
 
 });
 
@@ -445,3 +448,18 @@ if (homeButton) {
     showStartScreen();
   });
 }
+
+pauseButton.addEventListener('click', () => {
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  }
+
+  if (tickerTimerId) {
+    clearInterval(tickerTimerId);
+    tickerTimerId = null;
+  }
+});
+
+
+
